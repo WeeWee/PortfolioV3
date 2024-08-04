@@ -13,6 +13,7 @@ import "~/tailwind.css";
 import { Navbar } from "./components/navbar";
 import {
 	PreventFlashOnWrongTheme,
+	Theme,
 	ThemeProvider,
 	useTheme,
 } from "remix-themes";
@@ -20,6 +21,7 @@ import { themeSessionResolver } from "./sessions.server";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import clsx from "clsx";
 import { Button } from "./components/ui/button";
+import { useEffect } from "react";
 export async function loader({ request }: LoaderFunctionArgs) {
 	const { getTheme } = await themeSessionResolver(request);
 	return {
@@ -37,9 +39,18 @@ export default function AppWithProviders() {
 }
 export function App() {
 	const data = useLoaderData<typeof loader>();
-	const [theme] = useTheme();
+	const [theme, setTheme] = useTheme();
+
+	useEffect(() => {
+		if (window !== undefined && !theme && !data.theme)
+			setTheme(
+				window.matchMedia("(prefers-color-scheme: dark)").matches
+					? Theme.DARK
+					: Theme.LIGHT
+			);
+	}, []);
 	return (
-		<html lang="en" className={clsx(theme)}>
+		<html lang="en" className={clsx(theme, "scroll-smooth")}>
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,9 +59,9 @@ export function App() {
 				<Links />
 			</head>
 			<body>
-				<main className="container ">
+				<main className="container min-h-screen">
 					<Navbar />
-					<div className="py-4">
+					<div className="py-4 pb-20 md:pb-4">
 						<Outlet />
 					</div>
 				</main>

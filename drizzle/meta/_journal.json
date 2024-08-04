@@ -15,6 +15,13 @@
       "when": 1716918784935,
       "tag": "0001_perpetual_skaar",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1722355680890,
+      "tag": "0002_light_lady_bullseye",
+      "breakpoints": true
     }
   ]
 }

@@ -27,6 +27,7 @@ async function seed() {
 					name: repo.name,
 					description: repo.description || "",
 					html_url: repo.html_url,
+					homepage_url: repo.homepage || "",
 					languages: [repo.language!],
 					personalized_description: "",
 					active: true,

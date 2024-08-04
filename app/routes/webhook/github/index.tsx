@@ -18,6 +18,7 @@ export async function action({ request }: ActionFunctionArgs) {
 			console.log("publicized");
 			return addProject({
 				...data.repository,
+				homepage_url: data.repository.homepage,
 				personalized_description: null,
 				languages: [data.repository.language],
 				created_at: data.repository.created_at,
@@ -31,6 +32,7 @@ export async function action({ request }: ActionFunctionArgs) {
 				personalized_description: "",
 				languages: [data.repository.language],
 				description: data.changes.description,
+				homepage_url: data.repository.homepage,
 				html_url: data.repository.html_url,
 				name: data.repository.name,
 				updated_at: data.repository.updated_at,
