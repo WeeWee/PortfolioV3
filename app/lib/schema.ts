@@ -11,6 +11,7 @@ export const projects = pgTable("projects", {
 	active: boolean("active").default(true),
 	created_at: text("created_at"),
 	updated_at: text("updated_at"),
+	homepage_url: text("homepage_url"),
 });
 export type Project = InferSelectModel<typeof projects>;
 export type Projects = Project[];

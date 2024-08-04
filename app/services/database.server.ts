@@ -1,13 +1,18 @@
 import { neon } from "@neondatabase/serverless";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/neon-http";
 import { octokit } from "~/lib/octokit";
 import { Project, projects } from "~/lib/schema";
 const sql = neon(process.env.NEON_DATABASE_URL!);
 export const db = drizzle(sql);
-export const getProjects = async () => {
+export const getProjects = async (length: number = 0) => {
 	return (
-		await db.select().from(projects).where(eq(projects.active, true))
+		await db
+			.select()
+			.from(projects)
+			.where(eq(projects.active, true))
+			.orderBy(desc(projects.updated_at))
+			.limit(length)
 	).sort(
 		(a, b) =>
 			new Date(b.updated_at!).getTime() - new Date(a.updated_at!).getTime()
@@ -31,6 +36,7 @@ export const updateProject = async (project: Project) => {
 			description: project.description,
 			active: project.active,
 			updated_at: project.updated_at,
+			homepage_url: project.homepage_url,
 		})
 		.where(eq(projects.id, project.id));
 };

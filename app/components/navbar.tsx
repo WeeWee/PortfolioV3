@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 import { ThemeToggle } from "./theme-toggle";
 import {
 	NavigationMenu,
@@ -7,35 +7,109 @@ import {
 	NavigationMenuList,
 	navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
+import { useMediaQuery } from "~/lib/hooks/useMediaQuery";
+import { RemixLinkProps } from "@remix-run/react/dist/components";
+import { cn } from "~/lib/utils";
+import {
+	BriefcaseBusinessIcon,
+	BriefcaseIcon,
+	ContactIcon,
+	HomeIcon,
+	LayoutGridIcon,
+	MailIcon,
+	UserIcon,
+} from "lucide-react";
 
 export function Navbar() {
-	return (
-		<NavigationMenu className="min-w-full py-2">
-			<NavigationMenuList className="w-full ">
-				<NavigationMenuItem>
-					<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-						<Link to="/">Home</Link>
-					</NavigationMenuLink>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-						<Link to="/about">About</Link>
-					</NavigationMenuLink>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-						<Link to="/experiences">Experiences</Link>
-					</NavigationMenuLink>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-						<Link to="/projects">Projects</Link>
-					</NavigationMenuLink>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
+	const isDesktop = useMediaQuery("(min-width: 768px)");
+	const pathname = useLocation().pathname;
+
+	if (isDesktop)
+		return (
+			<NavigationMenu className="min-w-full py-2 h-14 *:w-full ">
+				<NavigationMenuList className="w-full">
+					<NavigationMenuItem>
+						<NavigationMenuLink
+							asChild
+							className={navigationMenuTriggerStyle()}
+						>
+							<Link to="/">Home</Link>
+						</NavigationMenuLink>
+					</NavigationMenuItem>
+					<NavigationMenuItem>
+						<NavigationMenuLink
+							asChild
+							className={navigationMenuTriggerStyle()}
+						>
+							<Link to="/about">About</Link>
+						</NavigationMenuLink>
+					</NavigationMenuItem>
+					<NavigationMenuItem>
+						<NavigationMenuLink
+							asChild
+							className={navigationMenuTriggerStyle()}
+						>
+							<Link to="/experiences">Experiences</Link>
+						</NavigationMenuLink>
+					</NavigationMenuItem>
+					<NavigationMenuItem>
+						<NavigationMenuLink
+							asChild
+							className={navigationMenuTriggerStyle()}
+						>
+							<Link to="/projects">Projects</Link>
+						</NavigationMenuLink>
+					</NavigationMenuItem>
+					<NavigationMenuItem>
+						<ThemeToggle />
+					</NavigationMenuItem>
+				</NavigationMenuList>
+			</NavigationMenu>
+		);
+	if (!isDesktop)
+		return (
+			<nav className="fixed bottom-0  left-0 w-full">
+				<div className=" bg-background flex items-center px-8 gap-4 justify-between border border-border h-16">
+					<ListItem to="/" pathname={pathname}>
+						<HomeIcon aria-label="Home" role="img" className="w-5 h-5" />
+					</ListItem>
+					<ListItem pathname={pathname} to="/about">
+						<UserIcon aria-label="About" role="img" className="w-5 h-5" />
+					</ListItem>
+					<ListItem pathname={pathname} to="/experiences">
+						<BriefcaseBusinessIcon
+							aria-label="Experiences"
+							role="img"
+							className="w-5 h-5"
+						/>
+					</ListItem>
+					<ListItem pathname={pathname} to="/projects">
+						<LayoutGridIcon
+							aria-label="Projects"
+							role="img"
+							className="w-5 h-5"
+						/>
+					</ListItem>
+					{/* <ListItem to="/#contact">
+						<MailIcon aria-label="Contact" role="img" className="w-5 h-5" />
+					</ListItem> */}
+
 					<ThemeToggle />
-				</NavigationMenuItem>
-			</NavigationMenuList>
-		</NavigationMenu>
-	);
+				</div>
+			</nav>
+		);
 }
+
+const ListItem = (props: RemixLinkProps & { pathname: string }) => {
+	return (
+		<Link
+			{...props}
+			className={cn(
+				"flex flex-col items-center justify-center group",
+				props.pathname === props.to ? "text-primary" : "text-muted-foreground"
+			)}
+		>
+			{props.children}
+		</Link>
+	);
+};
