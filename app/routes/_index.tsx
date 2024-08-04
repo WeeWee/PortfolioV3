@@ -49,9 +49,7 @@ const quotes = [
 ];
 export default function Index() {
 	const projects = useLoaderData<typeof loader>();
-	const autoPlayCarousel = useRef(
-		Autoplay({ delay: 10000, stopOnInteraction: true, stopOnFocusIn: true })
-	);
+
 	const isDesktop = useMediaQuery("(min-width: 1024px)");
 	return (
 		<div className="space-y-4 md:space-y-16">
@@ -109,48 +107,13 @@ export default function Index() {
 			</section>
 			<section className="">
 				<h1 className="font-bold text-xl md:text-3xl  mb-4 text-center">
-					Words from references
+					What People Say
 				</h1>
 				<div className="grid md:grid-cols-2 gap-4 ">
 					{quotes.map((quote, index) => (
 						<Quote key={index} {...quote} />
 					))}
 				</div>
-				{/* <ClientOnly>
-					{() => (
-						<div className="w-full p-6">
-							<Carousel
-								className="select-none w-full max-w-2xl mx-auto"
-								opts={{
-									loop: true,
-								}}
-								plugins={[autoPlayCarousel.current]}
-							>
-								<CarouselContent>
-									{quotes.map(({ quote, author }, index) => (
-										<CarouselItem
-											key={author + index}
-											className="md:p-4 cursor-pointer md:basis-1/2"
-										>
-											<div className="md:p-1">
-												<Card>
-													<CardContent className="p-4 md:p-6 h-full">
-														<q className="text-sm max-w-[50ch] block">
-															{quote}
-														</q>
-														<p className="font-bold max-w-[50ch]">{author}</p>
-													</CardContent>
-												</Card>
-											</div>
-										</CarouselItem>
-									))}
-								</CarouselContent>
-								<CarouselPrevious />
-								<CarouselNext />
-							</Carousel>
-						</div>
-					)}
-				</ClientOnly> */}
 			</section>
 		</div>
 	);
