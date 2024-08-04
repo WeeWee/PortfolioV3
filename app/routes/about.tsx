@@ -11,11 +11,11 @@ export default function About() {
 						className="w-32 h-32 md:w-64 md:h-64 lg:absolute top-0 left-0 rounded-lg z-[4] object-cover ring-2  ring-ring -rotate-12 lg:rotate-12"
 					/>
 					<img
-						src="/sunset.jpg"
+						src="/sunset.webp"
 						className="hidden lg:block w-32 h-32 md:w-64 md:h-64 lg:absolute top-48 z-[3] -left-12 rounded-lg object-cover ring-2  ring-ring lg:-rotate-12 "
 					/>
 					<img
-						src="/sunset.jpg"
+						src="/sunset.webp"
 						className="hidden lg:block w-32 h-32 md:w-64 md:h-64 lg:absolute top-32 z-[2] left-48 rounded-lg object-cover ring-2  ring-ring lg:rotate-12"
 					/>
 				</div>
