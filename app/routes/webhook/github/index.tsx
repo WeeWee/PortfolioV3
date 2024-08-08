@@ -6,7 +6,6 @@ import {
 	softDeleteProject,
 	updateProject,
 } from "~/services/database.server";
-
 export async function action({ request }: ActionFunctionArgs) {
 	const data = await request.json();
 	if (!verify_signature(request, data)) {

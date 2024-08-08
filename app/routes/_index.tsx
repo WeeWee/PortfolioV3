@@ -8,7 +8,26 @@ import { CodeIcon, CodeXmlIcon } from "lucide-react";
 import { Quote } from "~/components/quote";
 import { useMediaQuery } from "react-responsive";
 export const meta: MetaFunction = () => {
-	return [{ title: "Adam Kindberg Portfolio" }];
+	const title = "Adam Kindberg Portfolio";
+	const description =
+		"Adam Kindberg's Portfolio website. 21-year old fullstack developer with a passion for learning, improving and open source. 4 years into my web development journey, learning everyday and loving what i do";
+	const url = "https://new.adamkindberg.com";
+	return [
+		{
+			title: title,
+		},
+		{ name: "description", content: "Adam Kindberg's Portfolio website" },
+		{ property: "og:url", content: url },
+		{ property: "og:type", content: "website" },
+		{ name: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:image", content: `${url}/seo-image.png` },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:url", content: url },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: `${url}/seo-image.png` },
+	];
 };
 export async function loader({ request }: LoaderFunctionArgs) {
 	const projects = await getProjects(3);
