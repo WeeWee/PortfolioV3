@@ -8,6 +8,6 @@ export const verify_signature = async (req: Request, data: any) => {
 		.update(JSON.stringify(data))
 		.digest("hex");
 	let trusted = Buffer.from(`sha256=${signature}`, "ascii");
-	let untrusted = Buffer.from(req.headers.get("x-hub-signature-256")!, "ascii");
+	let untrusted = Buffer.from(req.headers.get("X-Hub-Signature-256")!, "ascii");
 	return crypto.timingSafeEqual(trusted, untrusted);
 };
