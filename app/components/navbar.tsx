@@ -15,7 +15,6 @@ import {
 	LayoutGridIcon,
 	UserIcon,
 } from "lucide-react";
-import { useMediaQuery } from "react-responsive";
 
 export function Navbar() {
 	const pathname = useLocation().pathname;
@@ -61,7 +60,7 @@ export function Navbar() {
 					</NavigationMenuItem>
 				</NavigationMenuList>
 			</NavigationMenu>
-			<nav className="fixed bottom-0  left-0 w-full md:hidden block">
+			<nav className="fixed bottom-0 z-50  left-0 w-full md:hidden block">
 				<div className=" bg-background flex items-center px-8 gap-4 justify-between border border-border h-16">
 					<ListItem to="/" pathname={pathname}>
 						<HomeIcon aria-label="Home" role="img" className="w-5 h-5" />
