@@ -32,18 +32,18 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export default function AppWithProviders() {
 	const data = useLoaderData<typeof loader>();
+
 	return (
 		<ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
 			<App />
 		</ThemeProvider>
 	);
 }
-export function App() {
+function App() {
 	const data = useLoaderData<typeof loader>();
 	const [theme, setTheme] = useTheme();
-
 	useEffect(() => {
-		if (window !== undefined && !theme && !data.theme)
+		if (window != undefined && !theme && !data.theme)
 			setTheme(
 				window.matchMedia("(prefers-color-scheme: dark)").matches
 					? Theme.DARK

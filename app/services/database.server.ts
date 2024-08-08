@@ -6,6 +6,7 @@ import { Project, projects } from "~/lib/schema";
 const sql = neon(process.env.NEON_DATABASE_URL!);
 export const db = drizzle(sql);
 export const getProjects = async (length: number = 0) => {
+	
 	return (
 		await db
 			.select()

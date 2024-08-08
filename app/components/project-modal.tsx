@@ -44,7 +44,13 @@ export function ProjectModal({ project }: { project: Project }) {
 					<DialogFooter className=" sm:justify-between gap-2 flex-col">
 						{project.homepage_url && (
 							<Button asChild variant="secondary">
-								<Link to={project.homepage_url}>Check out website</Link>
+								<Link
+									to={project.homepage_url}
+									rel="noreferrer"
+									target="_blank"
+								>
+									Check out website
+								</Link>
 							</Button>
 						)}
 						<DialogClose asChild>

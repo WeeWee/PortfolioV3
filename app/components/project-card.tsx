@@ -13,6 +13,7 @@ import {
 } from "~/components/ui/card";
 import { cn } from "~/lib/utils";
 import { useEffect, useRef, useState } from "react";
+import { ClientOnly } from "remix-utils/client-only";
 export function ProjectCard({
 	project,
 	showcase = false,
@@ -25,11 +26,13 @@ export function ProjectCard({
 	const [isSelected, setIsSelected] = useState(false);
 	const currentSelected = searchParams.get("selected");
 	useEffect(() => {
-		if (currentSelected === project.name) {
+		if (currentSelected === project.name && !showcase) {
 			setIsSelected(true);
 			ref.current?.scrollTo({ behavior: "smooth", top: -10 });
+		} else {
+			setIsSelected(false);
 		}
-	}, [currentSelected, searchParams]);
+	}, [currentSelected, project.name, showcase]);
 	return (
 		<Card
 			key={project.id}
@@ -67,9 +70,10 @@ export function ProjectCard({
 								target="_blank"
 								rel="noreferrer noopener"
 							>
-								Github Link
+								Source code
 							</Link>
 						</Button>
+
 						<ProjectModal project={project} />
 					</>
 				)}
