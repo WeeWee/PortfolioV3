@@ -31,7 +31,7 @@ export default function About() {
 			<section className="grid md:grid-cols-2 gap-4 md:gap-8">
 				<div className="relative mt-8 flex-1">
 					<img
-						src="/linkedin.jpg"
+						src="/profile-picture.png"
 						className="w-32 h-32 md:w-48 md:h-48 lg:w-64  lg:h-64 lg:absolute top-0 left-0 rounded-lg z-[4] object-cover ring-2  ring-ring -rotate-12 lg:rotate-12"
 					/>
 					<img
