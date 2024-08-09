@@ -11,10 +11,8 @@ export async function action({ request }: ActionFunctionArgs) {
 	if (!verify_signature(request, data)) {
 		return json({ json: { error: "Unauthorized" } }, 401);
 	}
-	console.log(data);
 	switch (data.action) {
 		case "publicized":
-			console.log("publicized");
 			return addProject({
 				...data.repository,
 				homepage_url: data.repository.homepage,
@@ -23,6 +21,7 @@ export async function action({ request }: ActionFunctionArgs) {
 				created_at: data.repository.created_at,
 				updated_at: data.repository.updated_at,
 				active: true,
+				image: null,
 			});
 
 		case "edited":

@@ -37,7 +37,7 @@ export function ProjectCard({
 		<Card
 			key={project.id}
 			ref={ref}
-			className={cn(" snap-start ", isSelected && "ring ring-ring ")}
+			className={cn(" snap-start", isSelected && "ring ring-ring ")}
 		>
 			<CardHeader>
 				<CardTitle className="font-bold text-lg capitalize">
@@ -50,12 +50,19 @@ export function ProjectCard({
 					<CardDescription>{project.description}</CardDescription>
 				)}
 			</CardHeader>
-			<CardContent className="p-4">
-				<p className="text-sm text-muted-foreground">
-					{project.languages &&
-						project.languages.length > 0 &&
-						`${project.languages[0]}...`}
-				</p>
+			<CardContent className="p-4 ">
+				{showcase ? (
+					<p className="text-sm text-muted-foreground">
+						{project.languages &&
+							project.languages.length > 0 &&
+							project.languages.at(0)}
+						...
+					</p>
+				) : (
+					<p className="text-sm text-muted-foreground">
+						{project.languages.join(", ")}
+					</p>
+				)}
 			</CardContent>
 			<CardFooter className="flex justify-between p-4 pt-0">
 				{showcase ? (

@@ -13,6 +13,8 @@ export function Hero() {
 						<p className="font-bold">Hi, im</p>
 						<Link
 							to="https://maps.app.goo.gl/3Th3BpqCxTFFqcMc7"
+							rel="noreferrer noopener"
+							target="_blank"
 							className="flex cursor-pointer gap-1 items-center text-sm hover:text-blue-500  "
 						>
 							<MapPinIcon className="w-4 h-4 " />

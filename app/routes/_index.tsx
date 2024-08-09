@@ -55,8 +55,6 @@ const quotes = [
 ];
 export default function Index() {
 	const projects = useLoaderData<typeof loader>();
-
-	const isDesktop = useMediaQuery({ minWidth: 768 });
 	return (
 		<div className="space-y-4 md:space-y-16">
 			<section className="grid md:grid-cols-2 gap-4">
