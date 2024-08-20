@@ -14,6 +14,7 @@ import {
 import { cn } from "~/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import { ClientOnly } from "remix-utils/client-only";
+import { ProjectTooltip } from "./project-tooltip";
 export function ProjectCard({
 	project,
 	showcase = false,
@@ -37,7 +38,10 @@ export function ProjectCard({
 		<Card
 			key={project.id}
 			ref={ref}
-			className={cn(" snap-start", isSelected && "ring ring-ring ")}
+			className={cn(
+				" snap-start flex flex-col",
+				isSelected && "ring ring-ring "
+			)}
 		>
 			<CardHeader>
 				<CardTitle className="font-bold text-lg capitalize">
@@ -50,25 +54,25 @@ export function ProjectCard({
 					<CardDescription>{project.description}</CardDescription>
 				)}
 			</CardHeader>
-			<CardContent className="p-4 ">
-				{showcase ? (
-					<p className="text-sm text-muted-foreground">
-						{project.languages &&
-							project.languages.length > 0 &&
-							project.languages.at(0)}
-						...
-					</p>
-				) : (
-					<p className="text-sm text-muted-foreground">
-						{project.languages.join(", ")}
-					</p>
-				)}
+			<CardContent className="flex-1 flex-col flex justify-end">
+				<p className="text-sm text-muted-foreground">
+					{project.languages.join(", ")}
+				</p>
 			</CardContent>
 			<CardFooter className="flex justify-between p-4 pt-0">
 				{showcase ? (
-					<Button variant="outline" asChild>
-						<Link to={`/projects?selected=${project.name}`}>More info</Link>
-					</Button>
+					<>
+						<Button variant="outline" asChild>
+							<Link
+								to={project.html_url}
+								target="_blank"
+								rel="noreferrer noopener"
+							>
+								Source code
+							</Link>
+						</Button>
+						<ProjectTooltip project={project} />
+					</>
 				) : (
 					<>
 						<Button variant="outline" asChild>
@@ -81,7 +85,9 @@ export function ProjectCard({
 							</Link>
 						</Button>
 
-						<ProjectModal project={project} />
+						<Button variant="link" asChild>
+							<Link to={`/projects/${project.name}`}>Read more</Link>
+						</Button>
 					</>
 				)}
 			</CardFooter>

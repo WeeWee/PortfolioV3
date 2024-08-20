@@ -17,7 +17,7 @@ import {
 	ThemeProvider,
 	useTheme,
 } from "remix-themes";
-import { themeSessionResolver } from "./sessions.server";
+import { themeSessionResolver } from "./services/sessions.server";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import clsx from "clsx";
 import { Button } from "./components/ui/button";
@@ -61,7 +61,9 @@ function App() {
 			</head>
 			<body>
 				<main className="container min-h-screen">
-					<ClientOnly fallback={<></>}>{() => <Navbar />}</ClientOnly>
+					<ClientOnly fallback={<nav className="min-w-full py-2 h-14"></nav>}>
+						{() => <Navbar />}
+					</ClientOnly>
 					<div className="py-4 pb-20 md:pb-4">
 						<Outlet />
 					</div>

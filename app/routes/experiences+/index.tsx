@@ -82,9 +82,9 @@ export default function Experiences() {
 					</li>
 				))}
 			</ol>
-			<h1 className="font-bold text-xl md:text-3xl  mt-8 my-4">
+			<h2 className="font-bold text-xl md:text-3xl  mt-8 my-4">
 				Academic Background
-			</h1>
+			</h2>
 
 			<ol className=" border border-s rounded-md">
 				{academics.map((academic) => (

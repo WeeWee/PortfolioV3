@@ -31,6 +31,7 @@ export const meta: MetaFunction = () => {
 };
 export async function loader({ request }: LoaderFunctionArgs) {
 	const projects = await getProjects(3);
+	console.log(projects);
 	return json(projects, {
 		headers: { "Cache-Control": "public, max-age=3600" },
 	});
@@ -56,7 +57,7 @@ const quotes = [
 export default function Index() {
 	const projects = useLoaderData<typeof loader>();
 	return (
-		<div className="space-y-4 md:space-y-16">
+		<main className="space-y-4 md:space-y-16">
 			<section className="grid md:grid-cols-2 gap-4">
 				<section className="space-y-4 ">
 					<Hero />
@@ -114,9 +115,9 @@ export default function Index() {
 			</section>
 
 			<section className=" space-y-2 ">
-				<h1 className="font-bold text-xl md:text-3xl text-center">
+				<h2 className="font-bold text-xl md:text-3xl text-center">
 					Latest project(s)
-				</h1>
+				</h2>
 				<div className="flex  items-center   gap-4">
 					<CodeIcon className="h-5 w-5" aria-label="Opening Code" />
 				</div>
@@ -131,15 +132,15 @@ export default function Index() {
 				</div>
 			</section>
 			<section className="">
-				<h1 className="font-bold text-xl md:text-3xl  mb-4 text-center">
+				<h3 className="font-bold text-xl md:text-3xl  mb-4 text-center">
 					What People Say
-				</h1>
+				</h3>
 				<div className="grid md:grid-cols-2 gap-4 ">
 					{quotes.map((quote, index) => (
 						<Quote key={index} {...quote} />
 					))}
 				</div>
 			</section>
-		</div>
+		</main>
 	);
 }
