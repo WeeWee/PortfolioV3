@@ -114,9 +114,9 @@ export default function Index() {
 			</section>
 
 			<section className=" space-y-2 ">
-				<h1 className="font-bold text-xl md:text-3xl text-center">
+				<h2 className="font-bold text-xl md:text-3xl text-center">
 					Latest project(s)
-				</h1>
+				</h2>
 				<div className="flex  items-center   gap-4">
 					<CodeIcon className="h-5 w-5" aria-label="Opening Code" />
 				</div>
@@ -131,9 +131,9 @@ export default function Index() {
 				</div>
 			</section>
 			<section className="">
-				<h1 className="font-bold text-xl md:text-3xl  mb-4 text-center">
+				<h3 className="font-bold text-xl md:text-3xl  mb-4 text-center">
 					What People Say
-				</h1>
+				</h3>
 				<div className="grid md:grid-cols-2 gap-4 ">
 					{quotes.map((quote, index) => (
 						<Quote key={index} {...quote} />
