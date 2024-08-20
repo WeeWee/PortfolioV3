@@ -51,7 +51,7 @@ export default function About() {
 					<section className="space-y-2">
 						<Card className="w-max">
 							<CardContent className=" bg-muted font-bold text-sm tracking-tight p-3 px-6 text-center rounded-md w-max ">
-								<h3>Introduction</h3>
+								<h2>Introduction</h2>
 							</CardContent>
 						</Card>
 
@@ -114,7 +114,7 @@ export default function About() {
 					<section className="space-y-2">
 						<Card className="w-max">
 							<CardContent className=" font-bold tracking-tight text-sm p-3 px-6 text-center rounded-md w-max ">
-								<h3>Skills</h3>
+								<h4>Skills</h4>
 							</CardContent>
 						</Card>
 						<div className="flex flex-wrap gap-2">

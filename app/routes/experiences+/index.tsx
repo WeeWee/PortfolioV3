@@ -64,7 +64,7 @@ export default function Experiences() {
 				{experiences.map((experience) => (
 					<li key={experience.company}>
 						<div className="p-4 max-w-[75ch]">
-							<h2 className="font-bold text-lg">{experience.name}</h2>
+							<p className="font-bold text-lg">{experience.name}</p>
 							<p className="text-sm text-muted-foreground">
 								{experience.internship && "Internship at "}
 								{experience.company}
@@ -82,15 +82,15 @@ export default function Experiences() {
 					</li>
 				))}
 			</ol>
-			<h1 className="font-bold text-xl md:text-3xl  mt-8 my-4">
+			<h2 className="font-bold text-xl md:text-3xl  mt-8 my-4">
 				Academic Background
-			</h1>
+			</h2>
 
 			<ol className=" border border-s rounded-md">
 				{academics.map((academic) => (
 					<li key={academic.school}>
 						<div className="p-4 max-w-[75ch]">
-							<h2 className="font-bold text-lg">{academic.name}</h2>
+							<p className="font-bold text-lg">{academic.name}</p>
 							<p className="text-sm text-muted-foreground">{academic.school}</p>
 							<p className="text-sm text-muted-foreground mt-2">
 								{dayjs(academic.startDate).format("DD/MM/YYYY")} -{" "}
