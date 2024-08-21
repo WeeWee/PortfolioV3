@@ -1,101 +1,123 @@
 {
-  "id": "e0c9f8b9-2662-466d-8be3-a7fc9e936b18",
-  "prevId": "cb37b402-a520-412e-a295-4b8261ea900d",
   "version": "6",
-  "dialect": "postgresql",
+  "dialect": "sqlite",
+  "id": "c822dd62-b13c-4e03-9f4a-8d3933cc3050",
+  "prevId": "c3a0a802-c539-4c88-a226-c2323a88324d",
   "tables": {
-    "public.projects": {
+    "projects": {
       "name": "projects",
-      "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "integer",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "name": {
           "name": "name",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
+        },
+        "images": {
+          "name": "images",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         },
         "description": {
           "name": "description",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "languages": {
           "name": "languages",
-          "type": "text[]",
+          "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "autoincrement": false
         },
         "html_url": {
           "name": "html_url",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
-        "personalized_description": {
-          "name": "personalized_description",
+        "idea": {
+          "name": "idea",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
+        },
+        "tech_stack": {
+          "name": "tech_stack",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         },
         "active": {
           "name": "active",
-          "type": "boolean",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false,
+          "autoincrement": false,
           "default": true
         },
         "created_at": {
           "name": "created_at",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "updated_at": {
           "name": "updated_at",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "homepage_url": {
           "name": "homepage_url",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         }
       },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
+      "indexes": {
         "projects_id_unique": {
           "name": "projects_id_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "id"
-          ]
+          ],
+          "isUnique": true
         },
         "projects_name_unique": {
           "name": "projects_name_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "name"
-          ]
+          ],
+          "isUnique": true
         }
-      }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
     }
   },
   "enums": {},
-  "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
+    "tables": {},
+    "columns": {}
   }
 }

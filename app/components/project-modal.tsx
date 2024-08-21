@@ -21,26 +21,9 @@ export function ProjectModal({ project }: { project: Project }) {
 			</DialogTrigger>
 			<DialogContent>
 				<div className=" mx-auto w-full max-w-sm">
-					<DialogHeader className="pb-2 pt-4">
-						<DialogTitle className="  capitalize">{project.name}</DialogTitle>
-						{project.description && (
-							<DialogDescription>{project.description}</DialogDescription>
-						)}
-					</DialogHeader>
-					<div className="py-2 pb-4">
-						<p className="text-sm text-muted-foreground pb-2">
-							{project.personalized_description}
-						</p>
-						<p>Languages</p>
-						<p className="text-sm text-muted-foreground">
-							{project.languages?.map(
-								(language) =>
-									`${language} ${
-										emojis[Math.floor(Math.random() * emojis.length)]
-									} `
-							)}
-						</p>{" "}
-					</div>
+					{project.image && (
+						<img src={project.image} alt={`${project.name} website`} />
+					)}
 					<DialogFooter className=" sm:justify-between gap-2 flex-col">
 						{project.homepage_url && (
 							<Button asChild variant="secondary">

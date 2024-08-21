@@ -35,7 +35,8 @@ const seedDatabase = async () => {
 					.values({
 						...repo,
 						homepage_url: repo.homepage!,
-						personalized_description: null,
+						idea: null,
+						tech_stack: null,
 						languages: languagesArray,
 						created_at: repo.created_at!,
 						updated_at: repo.updated_at!,

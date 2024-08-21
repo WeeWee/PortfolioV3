@@ -27,7 +27,7 @@ export const skills = [
 ];
 export default function About() {
 	return (
-		<div>
+		<main>
 			<section className="grid md:grid-cols-2 gap-4 md:gap-8">
 				<div className="relative mt-8 flex-1">
 					<img
@@ -125,6 +125,6 @@ export default function About() {
 					</section>
 				</div>
 			</section>
-		</div>
+		</main>
 	);
 }

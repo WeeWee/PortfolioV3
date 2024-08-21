@@ -31,6 +31,7 @@ export const meta: MetaFunction = () => {
 };
 export async function loader({ request }: LoaderFunctionArgs) {
 	const projects = await getProjects(3);
+	console.log(projects);
 	return json(projects, {
 		headers: { "Cache-Control": "public, max-age=3600" },
 	});
@@ -56,7 +57,7 @@ const quotes = [
 export default function Index() {
 	const projects = useLoaderData<typeof loader>();
 	return (
-		<div className="space-y-4 md:space-y-16">
+		<main className="space-y-4 md:space-y-16">
 			<section className="grid md:grid-cols-2 gap-4">
 				<section className="space-y-4 ">
 					<Hero />
@@ -140,6 +141,6 @@ export default function Index() {
 					))}
 				</div>
 			</section>
-		</div>
+		</main>
 	);
 }

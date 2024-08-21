@@ -10,19 +10,27 @@ const client = createClient({
 export const db = drizzle(client, { schema: { projects } });
 export const getProjects = async (length: number = 0) => {
 	return (
-		await db
-			.select()
-			.from(projects)
-			.where(eq(projects.active, true))
-			.orderBy(desc(projects.updated_at))
-			.limit(length)
+		await db.query.projects.findMany({
+			where: (project, { eq }) => eq(project.active, true),
+			orderBy: (project, { desc }) => desc(project.updated_at),
+			limit: length,
+		})
 	).sort(
 		(a, b) =>
 			new Date(b.updated_at!).getTime() - new Date(a.updated_at!).getTime()
 	);
-	
 };
-
+export const getProject = async (name: string | undefined) => {
+	if (!name) return null;
+	try {
+		return await db.query.projects.findFirst({
+			where: (project, { eq }) => eq(project.name, name),
+		});
+	} catch (err) {
+		console.error(err);
+		return null;
+	}
+};
 export const addProject = async (project: Project) => {
 	const createdProject = await db
 		.insert(projects)
