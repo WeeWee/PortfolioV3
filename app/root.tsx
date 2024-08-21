@@ -61,10 +61,12 @@ function App() {
 			</head>
 			<body>
 				<main className="container min-h-screen">
-					<ClientOnly fallback={<nav className="min-w-full py-2 h-14"></nav>}>
+					<ClientOnly
+						fallback={<nav className="min-w-full py-2 h-16 md:h-14"></nav>}
+					>
 						{() => <Navbar />}
 					</ClientOnly>
-					<div className="py-4 pb-20 md:pb-4">
+					<div className="py-4 pb-20 md:pb-4 md:pt-20">
 						<Outlet />
 					</div>
 				</main>
