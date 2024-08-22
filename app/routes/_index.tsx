@@ -39,7 +39,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 const quotes = [
 	{
 		name: "Tobias K.",
-		role: "Cheif Technical Officer at Gents",
+		role: "Chief Technical Officer at Gents",
 		image: "/tobias.jpg",
 		quote:
 			"Adam demonstrates remarkable positivity and self-motivation, consistently arriving at the office with a smile. His keen interest in coding and adeptness at problem-solving are noteworthy, particularly given his youth. He possesses a strong foundation in development and exhibits a clear eagerness to expand his skills further.",
