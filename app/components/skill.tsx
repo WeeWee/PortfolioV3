@@ -9,7 +9,7 @@ export function Skill({ tech, i }: { tech: string; i: number }) {
 			<Card className="w-max">
 				<CardContent
 					className={cn(
-						"text-xs  w-max group-odd:bg-muted  font-semibold p-3 px-6 text-center rounded-md relative group ",
+						"text-xs  w-max group-odd:bg-muted/60 group-even:bg-background/20   font-semibold p-3 px-6 text-center rounded-md relative group dark:shadow-inner dark:shadow-primary/10",
 						topSkill && "dark:text-[#c5af2f] font-bold"
 					)}
 				>
