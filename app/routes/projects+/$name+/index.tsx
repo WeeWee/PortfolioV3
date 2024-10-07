@@ -111,7 +111,7 @@ export default function Project() {
 						</Button>
 					)}
 					{project.html_url && (
-						<Button asChild>
+						<Button variant="secondary" asChild>
 							<Link to={project.html_url}>Code &lt;/&gt; </Link>
 						</Button>
 					)}

@@ -1,13 +1,20 @@
 import { CrownIcon } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
+import { cn } from "~/lib/utils";
 
 export function Skill({ tech, i }: { tech: string; i: number }) {
+	const topSkill = i === 0;
 	return (
 		<div className="group " key={tech}>
 			<Card className="w-max">
-				<CardContent className="text-xs w-max group-odd:bg-muted font-semibold p-3 px-6 text-center rounded-md relative group ">
-					<p>{tech}</p>
-					{i === 0 && (
+				<CardContent
+					className={cn(
+						"text-xs  w-max group-odd:bg-muted  font-semibold p-3 px-6 text-center rounded-md relative group ",
+						topSkill && "dark:text-[#c5af2f] font-bold"
+					)}
+				>
+					<p>{tech} </p>
+					{topSkill && (
 						<CrownIcon className="w-4 h-4 absolute -top-1 -right-1 rotate-[25deg]  dark:animate-crown-dark animate-crown-light  transition " />
 					)}
 				</CardContent>
