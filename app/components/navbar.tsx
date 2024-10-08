@@ -21,8 +21,8 @@ export function Navbar() {
 
 	return (
 		<>
-			<NavigationMenu className="min-w-full py-2 h-14 *:w-full hidden md:block ">
-				<NavigationMenuList className="w-full">
+			<NavigationMenu className="min-w-full max-w-none inset-0   fixed py-2 h-16 *:w-full hidden md:block bg-background mx-auto">
+				<NavigationMenuList className="w-full ">
 					<NavigationMenuItem>
 						<NavigationMenuLink
 							asChild
