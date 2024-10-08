@@ -1,5 +1,5 @@
 import { createClient } from "@libsql/client";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, inArray } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/libsql";
 import { Project, projects } from "~/lib/schema";
 
@@ -23,6 +23,9 @@ export const getProjects = async (length: number = 0) => {
 export const getProject = async (name: string | undefined) => {
 	if (!name) return null;
 	try {
+
+  
+  
 		return await db.query.projects.findFirst({
 			where: (project, { eq }) => eq(project.name, name),
 		});
